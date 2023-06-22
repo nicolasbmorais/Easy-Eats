@@ -30,13 +30,13 @@ class InputTextFormField extends StatelessWidget {
         counterText: '',
         labelText: labelText,
         labelStyle: TextStyle(
-          color: ColorPalette.grey,
+          color: ColorPalette.greyIcons,
           fontWeight: FontWeight.w600,
           fontSize: 15,
         ),
         border: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: ColorPalette.grey,
+            color: ColorPalette.greyIcons,
           ),
         ),
         focusedBorder: const UnderlineInputBorder(

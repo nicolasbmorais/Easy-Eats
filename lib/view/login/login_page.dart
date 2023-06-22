@@ -1,3 +1,4 @@
+import 'package:easy_eats/view/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:easy_eats/common/buttons/custom_text_button.dart';
@@ -98,7 +99,13 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 24),
                     child: PrimaryButton(
                       title: 'Login',
-                      onPressed: () {},
+                      onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => const HomePage(),
+                          ));
+                    },
                     ),
                   ) // Expanded(
                   //   child: Align(

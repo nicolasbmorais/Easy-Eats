@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:flutter/material.dart';
 
