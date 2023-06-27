@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // colorScheme: ColorScheme.fromSeed(seedColor: ColorPalette.primary),
-          fontFamily: 'Nunito',
+          // fontFamily: 'Nunito',
           useMaterial3: true,
           scaffoldBackgroundColor: ColorPalette.background,
         ),
