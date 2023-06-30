@@ -1,3 +1,6 @@
+import 'package:dio/dio.dart';
+import 'package:easy_eats/repository/burguer_repository.dart';
+import 'package:easy_eats/repository/pizza_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
@@ -15,14 +18,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(create: (_) => FoodController()),
+        Provider<FoodController>(
+          create: (_) => FoodController(
+            burguerRepository: BurguerRepository(dio: Dio()),
+            pizzaRepository: PizzaRepository(dio: Dio()),
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Food For Everyone',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // colorScheme: ColorScheme.fromSeed(seedColor: ColorPalette.primary),
-          // fontFamily: 'Nunito',
+          fontFamily: 'Nunito',
           useMaterial3: true,
           scaffoldBackgroundColor: ColorPalette.background,
         ),

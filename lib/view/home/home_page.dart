@@ -1,6 +1,9 @@
 import 'package:easy_eats/common/color/color_palette.dart';
+import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/view/home/item_card.dart';
+import 'package:easy_eats/view/home/items_details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -34,7 +37,6 @@ class HomePage extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 34,
-                        fontFamily: 'Nunito',
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -49,7 +51,6 @@ class HomePage extends StatelessWidget {
                           TextStyle(
                             color: ColorPalette.greyIcons,
                             fontSize: 17,
-                            fontFamily: 'Nunito',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -84,7 +85,20 @@ class HomePage extends StatelessWidget {
                         childAspectRatio:
                             1.0, // proporção da altura em relação à largura dos itens
                       ),
-                      itemBuilder: (context, subIndex) => const ItemCard(),
+                      itemCount:
+                          context.read<FoodController>().pizzaList.length,
+                      itemBuilder: (context, index) => ItemCard(
+                        index: index,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) =>
+                                  ItemsDetailsPage(index: index),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),

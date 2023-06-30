@@ -1,3 +1,4 @@
+import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/view/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -7,6 +8,7 @@ import 'package:easy_eats/common/buttons/primary_button.dart';
 import 'package:easy_eats/common/buttons/terciary_button.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/common/input/input_text_form_field.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -99,13 +101,16 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 24),
                     child: PrimaryButton(
                       title: 'Login',
-                      onPressed: () {
-                      Navigator.push(
+                      onPressed: () async {
+                        await context.read<FoodController>().getProductsList();
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
                           context,
                           MaterialPageRoute<void>(
                             builder: (BuildContext context) => const HomePage(),
-                          ));
-                    },
+                          ),
+                        );
+                      },
                     ),
                   ) // Expanded(
                   //   child: Align(

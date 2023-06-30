@@ -27,7 +27,6 @@ class SplashScreen extends StatelessWidget {
                       Text(
                         'Servindo a melhor comida para você',
                         style: TextStyle(
-                          fontFamily: 'Nunito',
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w900,
                           fontSize: 40,
