@@ -35,7 +35,11 @@ class ItemCard extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: Image.network(fit: BoxFit.cover, image ?? 'Erro'),
+                  child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
+                      ),
+                      child: Image.network(fit: BoxFit.cover, image ?? 'Erro')),
                 ),
                 const SizedBox(height: 20),
                 Text(
@@ -48,7 +52,7 @@ class ItemCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  'R\$ ${price!.replaceAll('.', ',')}',
+                  'R\$ ${price?.replaceAll('.', ',')}',
                   style: TextStyle(
                     color: ColorPalette.errorSystem,
                     fontSize: 17,

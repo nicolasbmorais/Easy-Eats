@@ -6,8 +6,9 @@ import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/view/splash_screen/splash_screen.dart';
 import 'package:provider/provider.dart';
-
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Nunito',
           useMaterial3: true,
           scaffoldBackgroundColor: ColorPalette.background,
+            appBarTheme: AppBarTheme(color: ColorPalette.background)
         ),
         home: const SplashScreen(),
       ),

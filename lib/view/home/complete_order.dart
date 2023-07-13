@@ -1,5 +1,6 @@
 import 'package:easy_eats/common/buttons/primary_button.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
+import 'package:easy_eats/view/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class CompleteOrder extends StatefulWidget {
@@ -77,7 +78,12 @@ class _CompleteOrderState extends State<CompleteOrder>
               bottom: 24,
               child: PrimaryButton(
                 title: 'Ir para página inicial',
-                onPressed: () {},
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const HomePage()),
+                  ModalRoute.withName('/'),
+                ),
               ),
             ),
           ],

@@ -43,58 +43,55 @@ class ItemsDetailsPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(image ?? 'Erro'),
+              SizedBox(
+                height: 250,
+                width: 250,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(image ?? 'Erro'),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    name ?? 'Erro',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'R\$ ${price.toString().replaceAll('.', ',')}',
+                    style: TextStyle(
+                      color: ColorPalette.errorSystem,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  titleText(title: 'Descrição'),
+                  descriptionText(
+                    description: desc ?? 'Erro',
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                child: Column(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          name ?? 'Erro',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'R\$ ${price.toString().replaceAll('.', ',')}',
-                          style: TextStyle(
-                            color: ColorPalette.errorSystem,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // titleText(title: 'Informações de entrega'),
-                        // descriptionText(
-                        //     description: 'Delivered between 8pm to 9:32 pm'),
-                        // const SizedBox(height: 42),
-                        titleText(title: 'Descrição'),
-                        descriptionText(
-                          description: desc ?? 'Erro',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 24, bottom: 24),
-                      child: PrimaryButton(
-                        title: 'Adicionar ao carrinho',
-                        onPressed: () {},
-                      ),
-                    )
-                  ],
+                padding: const EdgeInsets.only(top: 24, bottom: 24),
+                child: PrimaryButton(
+                  title: 'Adicionar ao carrinho',
+                  onPressed: () {},
                 ),
               )
             ],

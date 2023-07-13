@@ -23,88 +23,74 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  children: [
-                    const Text(
-                      'Comida deliciosa perto de você',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 34,
-                        fontWeight: FontWeight.w700,
-                      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: [
+                  const Text(
+                    'Comida deliciosa perto de você',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 34,
+                      fontWeight: FontWeight.w700,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16, bottom: 30),
-                      child: SearchBar(
-                        hintText: 'Pesquisar',
-                        backgroundColor:
-                            MaterialStatePropertyAll(ColorPalette.inputColor),
-                        elevation: const MaterialStatePropertyAll(1),
-                        textStyle: MaterialStatePropertyAll(
-                          TextStyle(
-                            color: ColorPalette.greyIcons,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        leading: const Padding(
-                          padding: EdgeInsets.only(left: 35),
-                          child: Icon(Icons.search_rounded),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16, bottom: 30),
+                    child: SearchBar(
+                      hintText: 'Pesquisar',
+                      backgroundColor:
+                          MaterialStatePropertyAll(ColorPalette.white),
+                      elevation: const MaterialStatePropertyAll(1),
+                      textStyle: MaterialStatePropertyAll(
+                        TextStyle(
+                          color: ColorPalette.greyIcons,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
+                      leading: const Padding(
+                        padding: EdgeInsets.only(left: 35),
+                        child: Icon(Icons.search_rounded),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Container(
-                height: MediaQuery.sizeOf(context).height,
+            ),
+            SizedBox(height: 40),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: SizedBox(
+                height: 260,
                 width: double.infinity,
-                color: Colors.transparent,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40.0),
-                      topRight: Radius.circular(40.0),
-                    ),
+                child: GridView.builder(
+                  scrollDirection: Axis.horizontal,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 20,
+                    crossAxisCount: 1, // número de itens por linha
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisSpacing: 2,
-                        crossAxisCount: 2, // número de itens por linha
-                        childAspectRatio:
-                            1.0, // proporção da altura em relação à largura dos itens
-                      ),
-                      itemCount:
-                          context.read<FoodController>().pizzaList.length,
-                      itemBuilder: (context, index) => ItemCard(
-                        index: index,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<void>(
-                              builder: (BuildContext context) =>
-                                  ItemsDetailsPage(index: index),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                  itemCount: context.read<FoodController>().pizzaList.length,
+                  itemBuilder: (context, index) => ItemCard(
+                    index: index,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              ItemsDetailsPage(index: index),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
