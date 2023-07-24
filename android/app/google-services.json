@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "861974945290",
+    "project_id": "easy-eats-49695",
+    "storage_bucket": "easy-eats-49695.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861974945290:android:8e0824bf97633bc2c249f3",
+        "android_client_info": {
+          "package_name": "com.example.easy_eats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861974945290-nm02io1glee3527f3ckrql5tkc3c1ooo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.easy_eats",
+            "certificate_hash": "e439c408b4ff7ae4976982ed9e004da31886e74b"
+          }
+        },
+        {
+          "client_id": "861974945290-m4s5ntdrinphbqlprvk809auijgbpqmm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD43TOhB2eYPuCCUfdYaNbq0JT_-aVzhD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861974945290-m4s5ntdrinphbqlprvk809auijgbpqmm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
