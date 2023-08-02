@@ -16,10 +16,10 @@ class FoodController extends ChangeNotifier {
   List<BurguerProductsModel> _burguersList = [];
   List<BurguerProductsModel> get burguersList => _burguersList;
 
-  List<Productos> _pizzaList = [];
-  List<Productos> get pizzaList => _pizzaList;
+  List<Products> _pizzaList = [];
+  List<Products> get pizzaList => _pizzaList;
 
-  Future<({List<BurguerProductsModel> burguer, List<Productos> pizza})>
+  Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
       getProductsList() async {
     _burguersList = [];
     _pizzaList = [];
@@ -33,7 +33,7 @@ class FoodController extends ChangeNotifier {
     );
   }
 
-  // Future<({List<BurguerProductsModel> burguer, List<Productos> pizza})>
+  // Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
   //     getProductsList() async {
   //   _burguersList = [];
   //   _pizzaList = [];
@@ -48,18 +48,5 @@ class FoodController extends ChangeNotifier {
   //     pizza: _pizzaList,
   //   );
   // }
-
-  // Future<List<BurguerProductsModel>> getProductsList() async {
-  //   try {
-  //     _burguersList = [];
-  //     _pizzaList = [];
-  //     final response = await burguerRepository!.getBurguersList();
-
-  //     _burguersList.addAll(response);
-  //     return _burguersList;
-  //   } on DioException catch (e) {
-  //     debugPrint(e.toString());
-  //     return [];
-  //   }
-  // }
+ 
 }

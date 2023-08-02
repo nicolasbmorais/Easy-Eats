@@ -14,7 +14,7 @@ class ItemsDetailsPage extends StatelessWidget {
         builder: (context, FoodController foodController, _) {
       // final BurguerProductsModel(:name, :images, :desc, :price) =
       //     foodController.burguersList[index];
-      final Productos(
+      final Products(
         nombre: name,
         linkImagen: image,
         precio: price,

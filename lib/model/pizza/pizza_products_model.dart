@@ -1,7 +1,7 @@
 class PizzaProductsModel {
   String? mensaje;
   bool? ok;
-  List<Productos>? productos;
+  List<Products>? productos;
 
   PizzaProductsModel({this.mensaje, this.ok, this.productos});
 
@@ -9,9 +9,9 @@ class PizzaProductsModel {
     mensaje = json['mensaje'];
     ok = json['ok'];
     if (json['productos'] != null) {
-      productos = <Productos>[];
+      productos = <Products>[];
       json['productos'].forEach((v) {
-        productos!.add(Productos.fromJson(v));
+        productos!.add(Products.fromJson(v));
       });
     }
   }
@@ -27,7 +27,7 @@ class PizzaProductsModel {
   }
 }
 
-class Productos {
+class Products {
   int? id;
   String? nombre;
   String? descripcion;
@@ -39,7 +39,7 @@ class Productos {
   int? stockRequerido;
   String? createdAt;
 
-  Productos(
+  Products(
       {this.id,
       this.nombre,
       this.descripcion,
@@ -51,7 +51,7 @@ class Productos {
       this.stockRequerido,
       this.createdAt});
 
-  Productos.fromJson(Map<String, dynamic> json) {
+  Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nombre = json['nombre'];
     descripcion = json['descripcion'];

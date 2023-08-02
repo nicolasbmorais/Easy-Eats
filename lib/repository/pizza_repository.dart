@@ -11,7 +11,7 @@ class PizzaRepository {
     required this.dio,
   });
 
-  Future<List<Productos>> getPizzasList() async {
+  Future<List<Products>> getPizzasList() async {
     try {
       final response = await dio.get(
         'https://pizzaallapala.p.rapidapi.com/productos',

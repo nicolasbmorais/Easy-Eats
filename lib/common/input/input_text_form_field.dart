@@ -8,11 +8,14 @@ class InputTextFormField extends StatelessWidget {
   final bool obscureText;
   final void Function(String?) onChanged;
   final String? Function(String?)? validator;
+  final TextEditingController textEditingController;
+
   const InputTextFormField({
     Key? key,
     required this.name,
     required this.labelText,
     required this.onChanged,
+    required this.textEditingController,
     this.obscureText = false,
     this.validator,
   }) : super(key: key);
@@ -20,6 +23,7 @@ class InputTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
+      controller: textEditingController,
       name: name,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onChanged: (value) => onChanged,

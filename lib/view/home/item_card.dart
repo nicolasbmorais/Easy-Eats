@@ -18,7 +18,7 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<FoodController>(
         builder: (context, FoodController foodController, _) {
-      final Productos(nombre: name, linkImagen: image, precio: price) =
+      final Products(nombre: name, linkImagen: image, precio: price) =
           foodController.pizzaList[index];
 
       return GestureDetector(
