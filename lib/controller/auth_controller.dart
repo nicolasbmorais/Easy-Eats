@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 class AuthController extends ChangeNotifier {
   bool isLoading = false;
-  // final _authService = AuthService();
-  final FirebaseAuth _authService = FirebaseAuth.instance;
+  final _authService = AuthService();
 
   Future<bool> createUser(
       {required String email, required String password}) async {

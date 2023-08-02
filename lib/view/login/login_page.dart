@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:easy_eats/controller/food_controller.dart';
-import 'package:easy_eats/controller/login_controller.dart';
+import 'package:easy_eats/controller/auth_controller.dart';
+import 'package:easy_eats/view/home/home_page.dart';
 import 'package:easy_eats/view/home/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_eats/common/buttons/custom_text_button.dart';
@@ -27,8 +28,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthController>(
-        builder: (context, AuthController authController, _) {
+    return Consumer2<AuthController, FoodController>(builder: (context,
+        AuthController authController, FoodController foodController, _) {
       return Scaffold(
         body: SingleChildScrollView(
           child: Column(
@@ -127,19 +128,20 @@ class _LoginPageState extends State<LoginPage> {
                       title: 'Login',
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute<void>(
-                          //     builder: (BuildContext context) =>
-                          //         const InitialPage(),
-                          //   ),
-                          // );
-                          // await context
-                          //     .read<FoodController>()
-                          //     .getProductsList();
-                          await authController.createUser(
+                          final validate = await authController.signIn(
                               email: _emailEditingController.value.text,
                               password: _passwordEditingController.value.text);
+                          if (validate) {
+                            // ignore: use_build_context_synchronously
+                            //TODO: colocar loading
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                    const HomePage(),
+                              ),
+                            );
+                          }
                         }
                       },
                     ),

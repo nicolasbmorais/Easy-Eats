@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_eats/view/home/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -12,24 +13,38 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Carrinho'),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26),
-        child: ListView(
-          children: const [
-            Row(
-              children: [
-                Icon(Icons.swipe),
-                Text('Deslize em um item para excluir'),
-              ],
-            ),
-            ListTileWidget(
-              image:
-                  'https://img.freepik.com/fotos-gratis/salada-de-frango-com-legumes-e-azeitonas_1220-4069.jpg?w=740&t=st=1687872626~exp=1687873226~hmac=0ba41739a5e214062732bbf7ebaf00494e46e6781c0a1ae580821a898d66c5f2',
-              title: 'title',
-              subTitle: 'subTitle',
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 26),
+          child: Column(
+            children: [
+              const SizedBox(height: 60),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.swipe_left_outlined),
+                  SizedBox(width: 10),
+                  Text('Deslize em um item para excluir'),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const ListTileWidget(
+                image:
+                    'https://img.freepik.com/fotos-gratis/salada-de-frango-com-legumes-e-azeitonas_1220-4069.jpg?w=740&t=st=1687872626~exp=1687873226~hmac=0ba41739a5e214062732bbf7ebaf00494e46e6781c0a1ae580821a898d66c5f2',
+                title: 'title',
+                subTitle: 'subTitle',
+              ),
+              SizedBox(
+                height: 300,
+                child: ListView.builder(
+                  itemCount: 2,
+                  itemBuilder: (context, index) => ItemCard(index: index),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
