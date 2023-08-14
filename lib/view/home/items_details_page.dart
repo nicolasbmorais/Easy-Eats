@@ -2,12 +2,16 @@ import 'package:easy_eats/common/buttons/primary_button.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/model/pizza/pizza_products_model.dart';
+import 'package:easy_eats/view/home/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ItemsDetailsPage extends StatelessWidget {
+  const ItemsDetailsPage({
+    required this.index,
+    super.key,
+  });
   final int index;
-  const ItemsDetailsPage({super.key, required this.index});
   @override
   Widget build(BuildContext context) {
     return Consumer<FoodController>(
@@ -15,10 +19,10 @@ class ItemsDetailsPage extends StatelessWidget {
       // final BurguerProductsModel(:name, :images, :desc, :price) =
       //     foodController.burguersList[index];
       final Products(
-        nombre: name,
+        name: name,
         linkImagen: image,
-        precio: price,
-        descripcion: desc
+        price: price,
+        description: desc
       ) = foodController.pizzaList[index];
 
       return Scaffold(
@@ -43,19 +47,18 @@ class ItemsDetailsPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 250,
-                width: 250,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(image ?? 'Erro'),
+              Center(
+                child: SizedBox(
+                  height: 250,
+                  width: 250,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.network(image ?? ''),
+                  ),
                 ),
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     name ?? 'Erro',
@@ -78,7 +81,6 @@ class ItemsDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   titleText(title: 'Descrição'),
                   descriptionText(
@@ -91,7 +93,17 @@ class ItemsDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 24, bottom: 24),
                 child: PrimaryButton(
                   title: 'Adicionar ao carrinho',
-                  onPressed: () {},
+                  onPressed: () {
+                    context
+                        .read<FoodController>()
+                        .productsCartList
+                        .add(foodController.pizzaList[index]);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const CartPage(),
+                      ),
+                    );
+                  },
                 ),
               )
             ],

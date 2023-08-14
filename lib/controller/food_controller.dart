@@ -19,6 +19,8 @@ class FoodController extends ChangeNotifier {
   List<Products> _pizzaList = [];
   List<Products> get pizzaList => _pizzaList;
 
+  List<Products> productsCartList = [];
+
   Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
       getProductsList() async {
     _burguersList = [];
@@ -33,6 +35,14 @@ class FoodController extends ChangeNotifier {
     );
   }
 
+  void addProducts(int index) {}
+
+  void removeItemFromCart(int index) {
+    if (index >= 0 && index < productsCartList.length) {
+      productsCartList.removeAt(index);
+      notifyListeners();
+    }
+  }
   // Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
   //     getProductsList() async {
   //   _burguersList = [];
@@ -48,5 +58,4 @@ class FoodController extends ChangeNotifier {
   //     pizza: _pizzaList,
   //   );
   // }
- 
 }

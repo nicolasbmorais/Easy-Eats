@@ -18,7 +18,7 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<FoodController>(
         builder: (context, FoodController foodController, _) {
-      final Products(nombre: name, linkImagen: image, precio: price) =
+      final Products(name: name, linkImagen: image, price: price) =
           foodController.pizzaList[index];
 
       return GestureDetector(
@@ -39,7 +39,7 @@ class ItemCard extends StatelessWidget {
                       borderRadius: const BorderRadius.all(
                         Radius.circular(5),
                       ),
-                      child: Image.network(fit: BoxFit.cover, image ?? 'Erro')),
+                      child: Image.network(fit: BoxFit.cover, image ?? '')),
                 ),
                 const SizedBox(height: 20),
                 Text(

@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     const Text(
-                      'Comida deliciosa perto de você',
+                      'Comida deliciosa para você',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 34,
@@ -102,8 +102,9 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute<void>(
-                            builder: (BuildContext context) =>
-                                ItemsDetailsPage(index: index),
+                            builder: (BuildContext context) => ItemsDetailsPage(
+                              index: index,
+                            ),
                           ),
                         );
                       },
@@ -172,7 +173,7 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Tela inicial'),
               onTap: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => HomePage(),
+                  builder: (BuildContext context) => const HomePage(),
                 ),
               ),
             ),

@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: PrimaryButton(
                       title: 'Login',
                       onPressed: () async {
-                        if (formKey.currentState!.validate()) {
+                        if (formKey.currentState!.saveAndValidate()) {
                           final validate = await authController.signIn(
                               email: _emailEditingController.value.text,
                               password: _passwordEditingController.value.text);

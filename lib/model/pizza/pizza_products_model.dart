@@ -29,52 +29,52 @@ class PizzaProductsModel {
 
 class Products {
   int? id;
-  String? nombre;
-  String? descripcion;
+  String? name;
+  String? description;
   String? linkImagen;
-  String? precio;
-  String? tasaIva;
-  int? vendible;
-  int? borrado;
-  int? stockRequerido;
+  String? price;
+  String? tax;
+  int? sold;
+  int? erased;
+  int? stockRequired;
   String? createdAt;
 
   Products(
       {this.id,
-      this.nombre,
-      this.descripcion,
+      this.name,
+      this.description,
       this.linkImagen,
-      this.precio,
-      this.tasaIva,
-      this.vendible,
-      this.borrado,
-      this.stockRequerido,
+      this.price,
+      this.tax,
+      this.sold,
+      this.erased,
+      this.stockRequired,
       this.createdAt});
 
   Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    nombre = json['nombre'];
-    descripcion = json['descripcion'];
+    name = json['nombre'];
+    description = json['descripcion'];
     linkImagen = json['linkImagen'];
-    precio = json['precio'];
-    tasaIva = json['tasaIva'];
-    vendible = json['vendible'];
-    borrado = json['borrado'];
-    stockRequerido = json['stockRequerido'];
+    price = json['precio'];
+    tax = json['tasaIva'];
+    sold = json['vendible'];
+    erased = json['borrado'];
+    stockRequired = json['stockRequerido'];
     createdAt = json['created_at'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['nombre'] = nombre;
-    data['descripcion'] = descripcion;
+    data['nombre'] = name;
+    data['descripcion'] = description;
     data['linkImagen'] = linkImagen;
-    data['precio'] = precio;
-    data['tasaIva'] = tasaIva;
-    data['vendible'] = vendible;
-    data['borrado'] = borrado;
-    data['stockRequerido'] = stockRequerido;
+    data['precio'] = price;
+    data['tasaIva'] = tax;
+    data['vendible'] = sold;
+    data['borrado'] = erased;
+    data['stockRequerido'] = stockRequired;
     data['created_at'] = createdAt;
     return data;
   }
