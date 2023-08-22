@@ -35,7 +35,6 @@ class FoodController extends ChangeNotifier {
     );
   }
 
-  void addProducts(int index) {}
 
   void removeItemFromCart(int index) {
     if (index >= 0 && index < productsCartList.length) {

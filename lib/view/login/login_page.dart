@@ -1,9 +1,5 @@
-import 'dart:async';
-
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/controller/auth_controller.dart';
-import 'package:easy_eats/view/home/home_page.dart';
-import 'package:easy_eats/view/home/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_eats/common/buttons/custom_text_button.dart';
 import 'package:easy_eats/common/buttons/primary_button.dart';
@@ -13,6 +9,11 @@ import 'package:easy_eats/common/input/input_text_form_field.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
+
+enum AuthMode {
+  login,
+  signUp,
+}
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -25,6 +26,15 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormBuilderState>();
   final _emailEditingController = TextEditingController();
   final _passwordEditingController = TextEditingController();
+  AuthMode _authMode = AuthMode.login;
+
+  @override
+  void dispose() {
+    _emailEditingController.dispose();
+    _passwordEditingController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +71,25 @@ class _LoginPageState extends State<LoginPage> {
                                 children: [
                                   CustomTextButton(
                                     title: 'Login',
-                                    isSelected: true,
-                                    onTap: () {},
+                                    isSelected: _authMode == AuthMode.login
+                                        ? true
+                                        : false,
+                                    onTap: () {
+                                      setState(() {
+                                        _authMode = AuthMode.login;
+                                      });
+                                    },
                                   ),
                                   CustomTextButton(
                                     title: 'Cadastrar',
-                                    isSelected: false,
-                                    onTap: () {},
+                                    isSelected: _authMode == AuthMode.login
+                                        ? false
+                                        : true,
+                                    onTap: () {
+                                      setState(() {
+                                        _authMode = AuthMode.signUp;
+                                      });
+                                    },
                                   ),
                                 ],
                               ),
@@ -112,11 +134,16 @@ class _LoginPageState extends State<LoginPage> {
                               FormBuilderValidators.minLength(5)
                             ]),
                           ),
-                          const SizedBox(height: 34),
-                          TerciaryButton(
-                            title: 'Esqueçeu a senha?',
-                            textColor: ColorPalette.primary,
-                          ),
+                          if (_authMode == AuthMode.login)
+                            Column(
+                              children: [
+                                const SizedBox(height: 34),
+                                TerciaryButton(
+                                  title: 'Esqueçeu a senha?',
+                                  textColor: ColorPalette.primary,
+                                ),
+                              ],
+                            ),
                         ],
                       ),
                     ),
@@ -125,27 +152,27 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 24),
                     child: PrimaryButton(
-                      title: 'Login',
+                      title:
+                          _authMode == AuthMode.login ? 'Login' : 'Criar Conta',
                       onPressed: () async {
                         if (formKey.currentState!.saveAndValidate()) {
-                          final validate = await authController.signIn(
+                          if (_authMode == AuthMode.login) {
+                            await authController.signIn(
+                              context: context,
                               email: _emailEditingController.value.text,
-                              password: _passwordEditingController.value.text);
-                          if (validate) {
-                            // ignore: use_build_context_synchronously
-                            //TODO: colocar loading
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    const HomePage(),
-                              ),
+                              password: _passwordEditingController.value.text,
+                            );
+                          } else {
+                            await authController.createUser(
+                              context: context,
+                              email: _emailEditingController.value.text,
+                              password: _passwordEditingController.value.text,
                             );
                           }
                         }
                       },
                     ),
-                  ) // Expanded(
+                  ),
                 ],
               ),
             ],

@@ -58,6 +58,7 @@ class ItemsDetailsPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 20),
               Column(
                 children: [
                   Text(
@@ -81,6 +82,7 @@ class ItemsDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   titleText(title: 'Descrição'),
                   descriptionText(
