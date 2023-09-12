@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>861974945290-nm02io1glee3527f3ckrql5tkc3c1ooo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDzO7YJivMtLIB6HMGI9SUiSn4AHygyzPg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>861974945290</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.easyEats.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>easy-eats-49695</string>
+	<key>STORAGE_BUCKET</key>
+	<string>easy-eats-49695.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:861974945290:ios:9c9c375471228926c249f3</string>
+</dict>
+</plist>
