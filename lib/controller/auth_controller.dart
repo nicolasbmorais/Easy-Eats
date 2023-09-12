@@ -27,7 +27,7 @@ class AuthController extends ChangeNotifier {
         throw 'An account already exists for that email.';
       }
     } catch (e) {
-      print(e);
+      rethrow;
     }
   }
 
@@ -43,7 +43,7 @@ class AuthController extends ChangeNotifier {
       );
       _navigation(context: context);
     } catch (e) {
-      print(e);
+      rethrow;
     }
   }
 

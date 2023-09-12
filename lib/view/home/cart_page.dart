@@ -5,12 +5,16 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:provider/provider.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
   @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
   Widget build(BuildContext context) {
-    print('reconstruiu');
     return Consumer<FoodController>(
         builder: (context, FoodController foodController, _) {
       return Scaffold(
@@ -36,7 +40,7 @@ class CartPage extends StatelessWidget {
                 Column(
                   children: List.generate(
                     foodController.productsCartList.length,
-                    (index) => newMethod(
+                    (index) => cartItem(
                       image:
                           foodController.productsCartList[index].linkImagen ??
                               '',
@@ -45,7 +49,8 @@ class CartPage extends StatelessWidget {
                           foodController.productsCartList[index].description ??
                               '',
                       onPressed: () {
-                        foodController.removeItemFromCart(index);
+                        foodController.removeItemFromCart(
+                            foodController.productsCartList[index]);
                       },
                     ),
                   ),
@@ -58,7 +63,7 @@ class CartPage extends StatelessWidget {
     });
   }
 
-  Padding newMethod({
+  Widget cartItem({
     required final String image,
     required final String title,
     required final String subTitle,

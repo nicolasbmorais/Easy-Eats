@@ -17,12 +17,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    loadData();
+    context.read<FoodController>().getProductsList();
     super.initState();
-  }
-
-  void loadData() async {
-    await context.read<FoodController>().getProductsList();
   }
 
   @override

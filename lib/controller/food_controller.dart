@@ -35,12 +35,9 @@ class FoodController extends ChangeNotifier {
     );
   }
 
-
-  void removeItemFromCart(int index) {
-    if (index >= 0 && index < productsCartList.length) {
-      productsCartList.removeAt(index);
-      notifyListeners();
-    }
+  void removeItemFromCart(Products products) {
+    productsCartList.remove(products);
+    notifyListeners();
   }
   // Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
   //     getProductsList() async {
