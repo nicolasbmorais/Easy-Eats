@@ -1,8 +1,8 @@
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/service/auth_service.dart';
-import 'package:easy_eats/view/home/cart_page.dart';
-import 'package:easy_eats/view/home/item_card.dart';
+import 'package:easy_eats/view/cart/cart_page.dart';
+import 'package:easy_eats/view/cart/item_card.dart';
 import 'package:easy_eats/view/home/items_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +30,12 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: ColorPalette.background,
           actions: [
             IconButton(
-              onPressed: null,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const CartPage(),
+                ),
+              ),
               icon: Icon(
                 Icons.shopping_cart_outlined,
                 color: ColorPalette.greyIcons,
@@ -162,17 +167,12 @@ class NavigationDrawer extends StatelessWidget {
           runSpacing: 16,
           children: [
             ListTile(
-              leading: Icon(
-                Icons.home_filled,
-                color: ColorPalette.black,
-              ),
-              title: const Text('Tela inicial'),
-              onTap: () => Navigator.of(context).pushReplacement(
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const HomePage(),
+                leading: Icon(
+                  Icons.home_filled,
+                  color: ColorPalette.black,
                 ),
-              ),
-            ),
+                title: const Text('Tela inicial'),
+                onTap: () => Navigator.of(context).pop()),
             ListTile(
               leading: Icon(
                 Icons.abc,

@@ -21,37 +21,18 @@ class FoodController extends ChangeNotifier {
 
   List<Products> productsCartList = [];
 
-  Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
-      getProductsList() async {
+  Future<void> getProductsList() async {
     _burguersList = [];
     _pizzaList = [];
     final pizzaResponse = await pizzaRepository!.getPizzasList();
     _pizzaList.addAll(pizzaResponse);
     // final burguerResponse = await burguerRepository!.getBurguersList();
     // _burguersList.addAll(burguerResponse);
-    return (
-      burguer: _burguersList,
-      pizza: _pizzaList,
-    );
+    notifyListeners();
   }
 
   void removeItemFromCart(Products products) {
     productsCartList.remove(products);
     notifyListeners();
   }
-  // Future<({List<BurguerProductsModel> burguer, List<Products> pizza})>
-  //     getProductsList() async {
-  //   _burguersList = [];
-  //   _pizzaList = [];
-  //   final burguerResponse = await burguerRepository!.getBurguersList();
-  //   final pizzaResponse = await pizzaRepository!.getPizzasList();
-  //   _burguersList.addAll(burguerResponse);
-  //   _pizzaList.addAll(pizzaResponse);
-
-  //   aa = [...burguersList, ...pizzaList];
-  //   return (
-  //     burguer: _burguersList,
-  //     pizza: _pizzaList,
-  //   );
-  // }
 }

@@ -5,6 +5,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/buttons/primary_button.dart';
+
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
@@ -16,51 +18,90 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<FoodController>(
-        builder: (context, FoodController foodController, _) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Carrinho'),
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 26),
-            child: Column(
-              children: [
-                const SizedBox(height: 60),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.swipe_left_outlined),
-                    SizedBox(width: 10),
-                    Text('Deslize em um item para excluir'),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Column(
-                  children: List.generate(
-                    foodController.productsCartList.length,
-                    (index) => cartItem(
-                      image:
-                          foodController.productsCartList[index].linkImagen ??
-                              '',
-                      title: foodController.productsCartList[index].name ?? '',
-                      subTitle:
-                          foodController.productsCartList[index].description ??
-                              '',
-                      onPressed: () {
-                        foodController.removeItemFromCart(
-                            foodController.productsCartList[index]);
-                      },
+      builder: (context, FoodController foodController, _) {
+        final hasCartData = foodController.productsCartList.isNotEmpty;
+
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Carrinho'),
+            centerTitle: true,
+            elevation: 0,
+          ),
+          body: SingleChildScrollView(
+            child: hasCartData
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: newMethod(foodController))
+                : Padding(
+                    padding: const EdgeInsets.only(top: 60),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 200,
+                            width: 200,
+                            child: Image.asset('assets/images/cart_icon.png'),
+                          ),
+                          SizedBox(
+                            height: 0,
+                          ),
+                          Text(
+                            'Ainda não há pedidos',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+          ),
+        );
+      },
+    );
+  }
+
+  Column newMethod(FoodController foodController) {
+    return Column(
+      children: [
+        const SizedBox(height: 60),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.swipe_left_outlined),
+            SizedBox(width: 10),
+            Text('Deslize em um item para excluir'),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Column(
+          children: List.generate(
+            foodController.productsCartList.length,
+            (index) => cartItem(
+              image: foodController.productsCartList[index].linkImagen ?? '',
+              title: foodController.productsCartList[index].name ?? '',
+              subTitle:
+                  foodController.productsCartList[index].description ?? '',
+              onPressed: () {
+                foodController
+                    .removeItemFromCart(foodController.productsCartList[index]);
+              },
             ),
           ),
         ),
-      );
-    });
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 24),
+          child: PrimaryButton(
+            title: 'Fazer pedido',
+            onPressed: () async {
+              
+            },
+          ),
+        ),
+      ],
+    );
   }
 
   Widget cartItem({

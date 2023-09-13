@@ -2,7 +2,7 @@ import 'package:easy_eats/common/buttons/primary_button.dart';
 import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/model/pizza/pizza_products_model.dart';
-import 'package:easy_eats/view/home/cart_page.dart';
+import 'package:easy_eats/view/cart/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,27 +34,20 @@ class ItemsDetailsPage extends StatelessWidget {
             icon: Icon(Icons.chevron_left_outlined,
                 color: ColorPalette.black, size: 25),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite_outline_rounded,
-                color: ColorPalette.black,
-                size: 20,
-              ),
-            ),
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Center(
-                child: SizedBox(
-                  height: 250,
-                  width: 250,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.network(image ?? ''),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: SizedBox(
+                    height: 250,
+                    width: 250,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(image ?? ''),
+                    ),
                   ),
                 ),
               ),
@@ -62,7 +55,7 @@ class ItemsDetailsPage extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    name ?? 'Erro',
+                    name ?? '',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 28,
