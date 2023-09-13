@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 
 import 'package:easy_eats/model/burguer/burguer_products_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class BurguerRepository {
   Dio dio;
@@ -16,9 +17,8 @@ class BurguerRepository {
         'https://burgers-hub.p.rapidapi.com/burgers',
         options: Options(
           headers: {
-            'X-RapidAPI-Key':
-                '5442f1c967msh1640d584b6fac28p1cefa4jsnd0364eb3deef',
-            'X-RapidAPI-Host': 'burgers-hub.p.rapidapi.com'
+            'X-RapidAPI-Key': dotenv.env['X-RapidAPI-Key-Burguer'],
+            'X-RapidAPI-Host': dotenv.env['X-RapidAPI-Host-Burguer'],
           },
         ),
       );
