@@ -1,5 +1,4 @@
 import 'package:easy_eats/common/buttons/primary_button.dart';
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/model/pizza/pizza_products_model.dart';
 import 'package:easy_eats/view/cart/cart_page.dart';
@@ -26,13 +25,15 @@ class ItemsDetailsPage extends StatelessWidget {
       ) = foodController.pizzaList[index];
 
       return Scaffold(
+        backgroundColor: Color(0xFFF8F8F8),
         appBar: AppBar(
+          backgroundColor: Color(0xFFF8F8F8),
           title: const Text('Detalhes'),
           centerTitle: true,
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.chevron_left_outlined,
-                color: ColorPalette.black, size: 25),
+                color: Colors.black, size: 25),
           ),
         ),
         body: SingleChildScrollView(
@@ -56,7 +57,7 @@ class ItemsDetailsPage extends StatelessWidget {
                 children: [
                   Text(
                     name ?? '',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 28,
                       fontWeight: FontWeight.w600,
@@ -66,7 +67,7 @@ class ItemsDetailsPage extends StatelessWidget {
                   Text(
                     'R\$ ${price.toString().replaceAll('.', ',')}',
                     style: TextStyle(
-                      color: ColorPalette.errorSystem,
+                      color: Color(0xFFFF0000),
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
                     ),
@@ -112,7 +113,7 @@ class ItemsDetailsPage extends StatelessWidget {
     return Text(
       description,
       style: TextStyle(
-        color: ColorPalette.greyIcons,
+        color: Color(0xFF8B8B8B),
         fontSize: 15,
         fontFamily: 'Inter',
         fontWeight: FontWeight.w500,
@@ -124,7 +125,7 @@ class ItemsDetailsPage extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        color: ColorPalette.black,
+        color: Colors.black,
         fontSize: 17,
         fontWeight: FontWeight.w600,
       ),

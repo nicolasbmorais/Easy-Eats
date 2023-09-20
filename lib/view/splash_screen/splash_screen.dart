@@ -37,7 +37,7 @@
 //     });
 
 //     return Scaffold(
-//       backgroundColor: ColorPalette.primary,
+//       backgroundColor: Color(0xFFFA4A0C),
 //       body: SafeArea(
 //         child: LayoutBuilder(builder: (context, constrains) {
 //           return SingleChildScrollView(
@@ -58,7 +58,7 @@
 //                           fontWeight: FontWeight.w900,
 //                           fontSize: 40,
 //                           letterSpacing: 1,
-//                           color: ColorPalette.white,
+//                           color: Color(0xFFFFFFFF),
 //                         ),
 //                       ),
 //                     ],

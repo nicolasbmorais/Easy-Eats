@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:easy_eats/common/buttons/custom_text_button.dart';
 import 'package:easy_eats/common/buttons/primary_button.dart';
 import 'package:easy_eats/common/buttons/terciary_button.dart';
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/common/input/input_text_form_field.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -41,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
     return Consumer2<AuthController, FoodController>(builder: (context,
         AuthController authController, FoodController foodController, _) {
       return Scaffold(
+        backgroundColor: Color(0xFFF8F8F8),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -51,8 +51,8 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     color: Colors.transparent,
                     child: Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
+                      decoration: BoxDecoration(
+                          color: Color(0xFFFFFFFF),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(40.0),
                             bottomRight: Radius.circular(40.0),
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const SizedBox(height: 34),
                                 TerciaryButton(
                                   title: 'Esqueçeu a senha?',
-                                  textColor: ColorPalette.primary,
+                                  textColor: Color(0xFFFA4A0C),
                                 ),
                               ],
                             ),

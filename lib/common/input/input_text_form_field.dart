@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:easy_eats/common/color/color_palette.dart';
 
 class InputTextFormField extends StatelessWidget {
   final String name;
@@ -25,7 +24,7 @@ class InputTextFormField extends StatelessWidget {
     return FormBuilderTextField(
       controller: textEditingController,
       name: name,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.disabled,
       onChanged: (value) => onChanged,
       validator: validator,
       obscureText: obscureText,
@@ -34,13 +33,13 @@ class InputTextFormField extends StatelessWidget {
         counterText: '',
         labelText: labelText,
         labelStyle: TextStyle(
-          color: ColorPalette.greyIcons,
+          color: Color(0xFF8B8B8B),
           fontWeight: FontWeight.w600,
           fontSize: 15,
         ),
         border: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: ColorPalette.greyIcons,
+            color: Color(0xFF8B8B8B),
           ),
         ),
         focusedBorder: const UnderlineInputBorder(
@@ -50,12 +49,12 @@ class InputTextFormField extends StatelessWidget {
         ),
         errorBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: ColorPalette.errorSystem,
+            color: Color(0xFFFF0000),
           ),
         ),
         focusedErrorBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: ColorPalette.errorSystem,
+            color: Color(0xFFFF0000),
           ),
         ),
       ),

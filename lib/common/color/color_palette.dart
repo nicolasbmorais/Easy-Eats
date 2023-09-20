@@ -5,7 +5,7 @@ class ColorPalette {
 
   static Color primary = const Color(0xFFFA4A0C);
   static Color white = const Color(0xFFFFFFFF);
-  static Color background = const Color(0xFFF8FBFF);
+  static Color background = Color(0xFFF8F8F8);
   static Color greyIcons = const Color(0xFF8B8B8B);
   static Color inputColor = const Color(0xFFEFEEEE);
   static Color errorSystem = const Color(0xFFFF0000);

@@ -1,4 +1,3 @@
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
@@ -27,7 +26,7 @@ class CustomTextButton extends StatelessWidget {
           Container(
             height: 3,
             width: 100,
-            color: isSelected ? ColorPalette.primary : Colors.transparent,
+            color: isSelected ? Color(0xFFFA4A0C) : Colors.transparent,
           )
         ],
       ),

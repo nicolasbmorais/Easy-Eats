@@ -1,8 +1,8 @@
 import 'package:easy_eats/controller/food_controller.dart';
+import 'package:easy_eats/view/checkout/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/buttons/primary_button.dart';
@@ -22,7 +22,9 @@ class _CartPageState extends State<CartPage> {
         final hasCartData = foodController.productsCartList.isNotEmpty;
 
         return Scaffold(
+          backgroundColor: Color(0xFFF8F8F8),
           appBar: AppBar(
+            backgroundColor: Color(0xFFF8F8F8),
             title: const Text('Carrinho'),
             centerTitle: true,
             elevation: 0,
@@ -96,7 +98,12 @@ class _CartPageState extends State<CartPage> {
           child: PrimaryButton(
             title: 'Fazer pedido',
             onPressed: () async {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const CheckoutPage(),
+                ),
+              );
             },
           ),
         ),
@@ -123,12 +130,12 @@ class _CartPageState extends State<CartPage> {
               width: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: ColorPalette.primary,
+                color: Color(0xFFFA4A0C),
               ),
               child: Center(
                 child: Icon(
                   Icons.favorite_outline_rounded,
-                  color: ColorPalette.white,
+                  color: Color(0xFFFFFFFF),
                   size: 26,
                 ),
               ),
@@ -139,12 +146,12 @@ class _CartPageState extends State<CartPage> {
               width: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: ColorPalette.primary,
+                color: Color(0xFFFA4A0C),
               ),
               child: IconButton(
                 icon: Icon(
                   Icons.delete,
-                  color: ColorPalette.white,
+                  color: Color(0xFFFFFFFF),
                   size: 26,
                 ),
                 onPressed: onPressed,
@@ -153,7 +160,7 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
         child: Card(
-          color: ColorPalette.white,
+          color: Color(0xFFFFFFFF),
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
             Radius.circular(20),
@@ -178,7 +185,7 @@ class _CartPageState extends State<CartPage> {
                       title,
                       style: TextStyle(
                         fontSize: 17,
-                        color: ColorPalette.black,
+                        color: Colors.black,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -186,7 +193,7 @@ class _CartPageState extends State<CartPage> {
                       subTitle,
                       style: TextStyle(
                         fontSize: 17,
-                        color: ColorPalette.errorSystem,
+                        color: Color(0xFFFF0000),
                         fontWeight: FontWeight.w600,
                         overflow: TextOverflow.clip,
                       ),

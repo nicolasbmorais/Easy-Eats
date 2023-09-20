@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:easy_eats/common/color/color_palette.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -16,8 +15,8 @@ class PrimaryButton extends StatelessWidget {
     return FilledButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(ColorPalette.primary),
-        foregroundColor: MaterialStateProperty.all(ColorPalette.white),
+        backgroundColor: MaterialStateProperty.all(Color(0xFFFA4A0C)),
+        foregroundColor: MaterialStateProperty.all(Color(0xFFFFFFFF)),
         fixedSize: MaterialStateProperty.all(const Size(315, 60)),
         textStyle: MaterialStateProperty.all(
           const TextStyle(

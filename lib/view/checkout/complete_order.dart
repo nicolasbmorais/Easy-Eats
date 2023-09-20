@@ -1,5 +1,4 @@
 import 'package:easy_eats/common/buttons/primary_button.dart';
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/view/home/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -41,17 +40,7 @@ class _CompleteOrderState extends State<CompleteOrder>
     return WillPopScope(
       onWillPop: _stopGif,
       child: Scaffold(
-        backgroundColor: ColorPalette.background,
-        appBar: AppBar(
-          backgroundColor: const Color(0xFFFBFBF3),
-          leading: IconButton(
-            onPressed: () {
-              _stopGif();
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios_rounded),
-          ),
-        ),
+        backgroundColor: Color(0xFFF8F8F8),
         body: Stack(
           alignment: AlignmentDirectional.center,
           children: [
@@ -65,7 +54,7 @@ class _CompleteOrderState extends State<CompleteOrder>
               ),
             ),
             const Positioned(
-              top: 42,
+              top: 100,
               child: Text(
                 'PEDIDO FEITO',
                 style: TextStyle(

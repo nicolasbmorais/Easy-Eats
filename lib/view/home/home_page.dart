@@ -1,4 +1,3 @@
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/service/auth_service.dart';
 import 'package:easy_eats/view/cart/cart_page.dart';
@@ -26,8 +25,10 @@ class _HomePageState extends State<HomePage> {
     return Consumer<FoodController>(
         builder: (context, FoodController foodController, _) {
       return Scaffold(
+        backgroundColor: Color(0xFFF8F8F8),
         appBar: AppBar(
-          backgroundColor: ColorPalette.background,
+          backgroundColor: Color(0xFFF8F8F8),
+          elevation: 0,
           actions: [
             IconButton(
               onPressed: () => Navigator.push(
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
               ),
               icon: Icon(
                 Icons.shopping_cart_outlined,
-                color: ColorPalette.greyIcons,
+                color: Color(0xFF8B8B8B),
               ),
             ),
           ],
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    const Text(
+                    Text(
                       'Comida deliciosa para você',
                       style: TextStyle(
                         color: Colors.black,
@@ -65,11 +66,11 @@ class _HomePageState extends State<HomePage> {
                       child: SearchBar(
                         hintText: 'Pesquisar',
                         backgroundColor:
-                            MaterialStatePropertyAll(ColorPalette.white),
+                            MaterialStatePropertyAll(Color(0xFFFFFFFF)),
                         elevation: const MaterialStatePropertyAll(1),
                         textStyle: MaterialStatePropertyAll(
                           TextStyle(
-                            color: ColorPalette.greyIcons,
+                            color: Color(0xFF8B8B8B),
                             fontSize: 17,
                             fontWeight: FontWeight.w600,
                           ),
@@ -131,7 +132,7 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: ColorPalette.white,
+      backgroundColor: Color(0xFFFFFFFF),
       child: Column(
         children: [
           builderHeader(context),
@@ -169,14 +170,14 @@ class NavigationDrawer extends StatelessWidget {
             ListTile(
                 leading: Icon(
                   Icons.home_filled,
-                  color: ColorPalette.black,
+                  color: Colors.black,
                 ),
                 title: const Text('Tela inicial'),
                 onTap: () => Navigator.of(context).pop()),
             ListTile(
               leading: Icon(
                 Icons.abc,
-                color: ColorPalette.black,
+                color: Colors.black,
               ),
               title: const Text('Carrinho'),
               onTap: () {
@@ -191,7 +192,7 @@ class NavigationDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.home_filled,
-                color: ColorPalette.black,
+                color: Colors.black,
               ),
               title: const Text('Sair'),
               onTap: () => _authService.logout(),

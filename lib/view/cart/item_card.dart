@@ -1,4 +1,3 @@
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:easy_eats/controller/food_controller.dart';
 import 'package:easy_eats/model/pizza/pizza_products_model.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +50,7 @@ class ItemCard extends StatelessWidget {
                   Text(
                     name ?? '',
                     style: TextStyle(
-                      color: ColorPalette.black,
+                      color: Colors.black,
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
                     ),
@@ -60,7 +59,7 @@ class ItemCard extends StatelessWidget {
                   Text(
                     'R\$ ${price?.replaceAll('.', ',')}',
                     style: TextStyle(
-                      color: ColorPalette.errorSystem,
+                      color: Color(0xFFFF0000),
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
                     ),

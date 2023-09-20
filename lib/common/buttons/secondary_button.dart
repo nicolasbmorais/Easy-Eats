@@ -1,4 +1,3 @@
-import 'package:easy_eats/common/color/color_palette.dart';
 import 'package:flutter/material.dart';
 
 class SecondaryButton extends StatelessWidget {
@@ -16,8 +15,8 @@ class SecondaryButton extends StatelessWidget {
     return FilledButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(ColorPalette.white),
-        foregroundColor: MaterialStateProperty.all(ColorPalette.primary),
+        backgroundColor: MaterialStateProperty.all(Color(0xFFFFFFFF)),
+        foregroundColor: MaterialStateProperty.all(Color(0xFFFA4A0C)),
         fixedSize: MaterialStateProperty.all(const Size(315, 60)),
         textStyle: MaterialStateProperty.all(
           const TextStyle(
